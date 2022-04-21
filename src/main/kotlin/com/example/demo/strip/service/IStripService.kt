@@ -1,5 +1,6 @@
 package com.example.demo.strip.service
 
+import com.example.demo.strip.model.Strip
 import com.example.demo.strip.model.dto.StripDto
 
 interface IStripService {
@@ -8,5 +9,5 @@ interface IStripService {
 
     fun getById(id: Long): StripDto
 
-    fun create(batchSize: Int)
+    fun create(batchSize: Int): List<Strip>
 }

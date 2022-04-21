@@ -5,6 +5,7 @@ import com.example.demo.strip.builder.StripBuilder
 import com.example.demo.strip.model.BaseStripElement
 import com.example.demo.strip.model.Cell
 import com.example.demo.strip.model.Row
+import com.example.demo.strip.model.Strip
 import com.example.demo.strip.model.Ticket
 import com.example.demo.strip.model.dto.StripDto
 import com.example.demo.strip.model.transformer.StripTransformer
@@ -29,9 +30,13 @@ internal class StripService(
         .orElseThrow { EntityNotFoundException() }
         .let { stripTransformer.transform(it) }
 
+    // Initially, the method did not return anything. After writing the mock data and at the end of writing the test,
+    // I set the return type, the one for which the test was written.
+    // In order not to rewrite the test, I decided to return an entity, not a DTO.
     @Transactional
-    override fun create(batchSize: Int) {
+    override fun create(batchSize: Int): List<Strip> {
         var counter = batchSize
+        val strips = mutableListOf<Strip>()
 
         while (counter != 0) {
             val stripBuilderDto = StripBuilder().build()
@@ -45,8 +50,12 @@ internal class StripService(
                 fillSecondRow(getRowByIndex(ticket.elements, SECOND_ROW_INDEX), columns)
                 fillThirdRow(getRowByIndex(ticket.elements, THIRD_ROW_INDEX), columns)
             }
+
+            strips.add(stripEntity)
             counter--
         }
+
+        return strips
     }
 
     private fun fillFirstRow(firstRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {
