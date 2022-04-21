@@ -45,24 +45,19 @@ internal class StripService(
                 fillSecondRow(getRowByIndex(ticket.elements, SECOND_ROW_INDEX), columns)
                 fillThirdRow(getRowByIndex(ticket.elements, THIRD_ROW_INDEX), columns)
             }
-
             counter--
         }
     }
 
     private fun fillFirstRow(firstRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {
         val fullColumnList = columns.filter { column -> column.values.size == NUMBERS_IN_COLUMN }.toMutableList()
-
         firstRow.fillRowWithColumnValues(fullColumnList)
-
         fillRemainingEmptyCells(firstRow, columns)
     }
 
     private fun fillSecondRow(secondRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {
         val columnList = columns.filter { column -> column.values.size == NUMBERS_IN_COLUMN.minus(1) }.toMutableList()
-
         secondRow.fillRowWithColumnValues(columnList)
-
         fillRemainingEmptyCells(secondRow, columns)
     }
 

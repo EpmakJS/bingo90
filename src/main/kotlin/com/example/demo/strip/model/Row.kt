@@ -16,8 +16,6 @@ class Row : BaseStripCompositeElement() {
         cells?.let { elements.addAll(cells) } ?: emptyList<Cell>()
     }
 
-
-
     init {
         type = ROW
     }
