@@ -1,6 +1,6 @@
 package com.example.demo.strip.repository
 
-import com.example.demo.strip.model.BaseStripElement
+import com.example.demo.strip.model.entity.BaseStripElement
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

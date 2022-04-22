@@ -1,7 +1,7 @@
 package com.example.demo.strip.model.transformer
 
 import com.example.demo.strip.model.ElementType.ROW
-import com.example.demo.strip.model.Row
+import com.example.demo.strip.model.entity.Row
 import com.example.demo.strip.model.dto.RowDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy

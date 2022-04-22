@@ -1,6 +1,6 @@
 package com.example.demo.strip.model.transformer
 
-import com.example.demo.strip.model.BaseStripElement
+import com.example.demo.strip.model.entity.BaseStripElement
 import com.example.demo.strip.model.ElementType
 import com.example.demo.strip.model.dto.BaseStripElementDto
 

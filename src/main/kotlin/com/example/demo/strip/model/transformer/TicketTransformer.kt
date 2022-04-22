@@ -1,7 +1,7 @@
 package com.example.demo.strip.model.transformer
 
 import com.example.demo.strip.model.ElementType.TICKET
-import com.example.demo.strip.model.Ticket
+import com.example.demo.strip.model.entity.Ticket
 import com.example.demo.strip.model.dto.TicketDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy

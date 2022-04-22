@@ -1,4 +1,4 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
 
 import com.example.demo.strip.model.ElementType.TICKET
 import javax.persistence.Entity

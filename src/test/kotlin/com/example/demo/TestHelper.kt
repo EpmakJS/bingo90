@@ -3,14 +3,14 @@ package com.example.demo
 import com.example.demo.strip.builder.ColumnBuilderDto
 import com.example.demo.strip.builder.StripBuilderDto
 import com.example.demo.strip.builder.TicketBuilderDto
-import com.example.demo.strip.model.Cell
+import com.example.demo.strip.model.entity.Cell
 import com.example.demo.strip.model.ElementType.CELL
 import com.example.demo.strip.model.ElementType.ROW
 import com.example.demo.strip.model.ElementType.STRIP
 import com.example.demo.strip.model.ElementType.TICKET
-import com.example.demo.strip.model.Row
-import com.example.demo.strip.model.Strip
-import com.example.demo.strip.model.Ticket
+import com.example.demo.strip.model.entity.Row
+import com.example.demo.strip.model.entity.Strip
+import com.example.demo.strip.model.entity.Ticket
 
 fun createDefaultStripBuilderDto(tickets: MutableList<TicketBuilderDto>) = StripBuilderDto().apply {
     this.tickets = tickets

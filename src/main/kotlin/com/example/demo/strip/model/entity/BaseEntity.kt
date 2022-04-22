@@ -1,4 +1,4 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
 
 import java.io.Serializable
 import javax.persistence.GeneratedValue

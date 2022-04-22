@@ -1,6 +1,6 @@
 package com.example.demo.strip.model.transformer
 
-import com.example.demo.strip.model.Cell
+import com.example.demo.strip.model.entity.Cell
 import com.example.demo.strip.model.ElementType.CELL
 import com.example.demo.strip.model.dto.CellDto
 import org.springframework.stereotype.Component

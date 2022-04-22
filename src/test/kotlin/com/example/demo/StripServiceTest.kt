@@ -1,9 +1,9 @@
 package com.example.demo
 
 import com.example.demo.strip.builder.StripBuilder
-import com.example.demo.strip.model.Cell
-import com.example.demo.strip.model.Row
-import com.example.demo.strip.model.Ticket
+import com.example.demo.strip.model.entity.Cell
+import com.example.demo.strip.model.entity.Row
+import com.example.demo.strip.model.entity.Ticket
 import com.example.demo.strip.model.transformer.StripTransformer
 import com.example.demo.strip.repository.ICellRepository
 import com.example.demo.strip.repository.IStripRepository
@@ -39,13 +39,12 @@ internal class StripServiceTest {
             (ticket.elements as MutableList<Row>).map { row ->
                 (row.elements as MutableList<Cell>).map { cell -> cell.value } } }
 
-        val rowsNotNullValues = rowValuesList.map { it.filter { el -> el != null } }
+        val rowsNotNullValues = rowValuesList.map { it.filterNotNull() }
 
         for (rowValues in rowsNotNullValues) {
             assertEquals(rowValues.size, 5)
         }
 
-        verify { stripCreator.create() }
         verify { stripCreator.create() }
     }
 

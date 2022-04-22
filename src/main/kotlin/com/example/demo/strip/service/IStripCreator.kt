@@ -1,6 +1,6 @@
 package com.example.demo.strip.service
 
-import com.example.demo.strip.model.Strip
+import com.example.demo.strip.model.entity.Strip
 
 interface IStripCreator {
 

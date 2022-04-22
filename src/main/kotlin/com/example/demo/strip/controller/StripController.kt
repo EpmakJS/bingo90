@@ -1,5 +1,6 @@
 package com.example.demo.strip.controller
 
+import com.example.demo.strip.model.entity.Strip
 import com.example.demo.strip.model.dto.StripDto
 import com.example.demo.strip.service.IStripService
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,5 +21,5 @@ class StripController(private val stripService: IStripService) {
     fun getById(@PathVariable id: Long): StripDto = stripService.getById(id)
 
     @PostMapping
-    fun create(@RequestParam batchSize: Int) = stripService.create(batchSize)
+    fun create(@RequestParam batchSize: Int): List<Strip> = stripService.create(batchSize)
 }

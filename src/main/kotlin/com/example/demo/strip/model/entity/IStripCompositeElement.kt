@@ -1,4 +1,4 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
 
 interface IStripCompositeElement : IStripElement {
 

@@ -1,4 +1,4 @@
-package com.example.demo.common
+package com.example.demo.strip.model.dto
 
 import java.io.Serializable
 

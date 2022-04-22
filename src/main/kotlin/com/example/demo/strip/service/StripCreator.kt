@@ -1,11 +1,11 @@
 package com.example.demo.strip.service
 
-import com.example.demo.strip.model.BaseStripCompositeElement
-import com.example.demo.strip.model.BaseStripElement
-import com.example.demo.strip.model.Cell
-import com.example.demo.strip.model.Row
-import com.example.demo.strip.model.Strip
-import com.example.demo.strip.model.Ticket
+import com.example.demo.strip.model.entity.BaseStripCompositeElement
+import com.example.demo.strip.model.entity.BaseStripElement
+import com.example.demo.strip.model.entity.Cell
+import com.example.demo.strip.model.entity.Row
+import com.example.demo.strip.model.entity.Strip
+import com.example.demo.strip.model.entity.Ticket
 import com.example.demo.strip.repository.ICellRepository
 import com.example.demo.strip.repository.IRowRepository
 import com.example.demo.strip.repository.IStripRepository

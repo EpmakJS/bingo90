@@ -2,11 +2,11 @@ package com.example.demo.strip.service
 
 import com.example.demo.strip.builder.ColumnBuilderDto
 import com.example.demo.strip.builder.StripBuilder
-import com.example.demo.strip.model.BaseStripElement
-import com.example.demo.strip.model.Cell
-import com.example.demo.strip.model.Row
-import com.example.demo.strip.model.Strip
-import com.example.demo.strip.model.Ticket
+import com.example.demo.strip.model.entity.BaseStripElement
+import com.example.demo.strip.model.entity.Cell
+import com.example.demo.strip.model.entity.Row
+import com.example.demo.strip.model.entity.Strip
+import com.example.demo.strip.model.entity.Ticket
 import com.example.demo.strip.model.dto.StripDto
 import com.example.demo.strip.model.transformer.StripTransformer
 import com.example.demo.strip.repository.ICellRepository
@@ -35,10 +35,9 @@ internal class StripService(
     // In order not to rewrite the test, I decided to return an entity, not a DTO.
     @Transactional
     override fun create(batchSize: Int): List<Strip> {
-        var counter = batchSize
         val strips = mutableListOf<Strip>()
 
-        while (counter != 0) {
+        for (i in 1..batchSize) {
             val stripBuilderDto = StripBuilder().build()
             val stripEntity = stripCreator.create()
 
@@ -50,12 +49,9 @@ internal class StripService(
                 fillSecondRow(getRowByIndex(ticket.elements, SECOND_ROW_INDEX), columns)
                 fillThirdRow(getRowByIndex(ticket.elements, THIRD_ROW_INDEX), columns)
             }
-
             strips.add(stripEntity)
-            counter--
         }
-
-        return strips
+        return strips.toList()
     }
 
     private fun fillFirstRow(firstRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {

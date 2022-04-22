@@ -1,4 +1,6 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
+
+import com.example.demo.strip.model.ElementType
 
 interface IStripElement {
 

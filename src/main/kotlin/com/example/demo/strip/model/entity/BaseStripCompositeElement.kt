@@ -1,4 +1,4 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
 
 import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany

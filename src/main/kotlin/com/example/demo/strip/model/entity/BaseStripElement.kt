@@ -1,9 +1,10 @@
-package com.example.demo.strip.model
+package com.example.demo.strip.model.entity
 
-import com.example.demo.strip.model.BaseEntity.Companion.ALLOCATION_SIZE
-import com.example.demo.strip.model.BaseEntity.Companion.SEQUENCE_GENERATOR
-import com.example.demo.strip.model.BaseStripElement.Companion.SEQUENCE_NAME
-import com.example.demo.strip.model.BaseStripElement.Companion.TABLE_NAME
+import com.example.demo.strip.model.ElementType
+import com.example.demo.strip.model.entity.BaseEntity.Companion.ALLOCATION_SIZE
+import com.example.demo.strip.model.entity.BaseEntity.Companion.SEQUENCE_GENERATOR
+import com.example.demo.strip.model.entity.BaseStripElement.Companion.SEQUENCE_NAME
+import com.example.demo.strip.model.entity.BaseStripElement.Companion.TABLE_NAME
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType.STRING

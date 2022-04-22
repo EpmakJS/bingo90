@@ -1,0 +1,224 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /strips:
+    get:
+      tags:
+        - strip-controller
+      operationId: lookup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StripDto'
+    post:
+      tags:
+        - strip-controller
+      operationId: create
+      parameters:
+        - name: batchSize
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Strip'
+  /strips/{id}:
+    get:
+      tags:
+        - strip-controller
+      operationId: getById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripDto'
+components:
+  schemas:
+    StripDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - STRIP
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketDto'
+    TicketDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - TICKET
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/RowDto'
+    RowDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - ROW
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/CellDto'
+    CellDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - CELL
+        value:
+          type: integer
+          format: int32
+          nullable: true
+    Strip:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parent:
+          $ref: '#/components/schemas/Strip'
+        type:
+          type: string
+          enum:
+            - STRIP
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parent:
+          $ref: '#/components/schemas/Strip'
+        type:
+          type: string
+          enum:
+            - TICKET
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Row'
+    Row:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parent:
+          $ref: '#/components/schemas/Ticket'
+        type:
+          type: string
+          enum:
+            - ROW
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cell'
+    Cell:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uiOrder:
+          type: integer
+          format: int32
+        parent:
+          $ref: '#/components/schemas/Row'
+        type:
+          type: string
+          enum:
+            - CELL
+        value:
+          type: integer
+          format: int32
+          nullable: true
+
