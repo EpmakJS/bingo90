@@ -77,7 +77,7 @@ class StripBuilder : IStripBuilder {
         }
             ?.values
             ?.add(value)
-            ?: addNumberToRandomTicket(columnOrder, value)
+            ?: addNumberToRandomTicket(columnOrder, value, maxColumnSize)
     }
 
     private fun List<TicketBuilderDto>.getRandomTicket() = get(SecureRandom().nextInt(size))
