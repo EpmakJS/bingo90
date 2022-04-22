@@ -42,7 +42,7 @@ internal class StripServiceTest {
         val rowsNotNullValues = rowValuesList.map { it.filterNotNull() }
 
         for (rowValues in rowsNotNullValues) {
-            assertEquals(rowValues.size, 5)
+            assertEquals(5, rowValues.size)
         }
 
         verify { stripCreator.create() }

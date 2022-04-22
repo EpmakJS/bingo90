@@ -30,7 +30,7 @@ internal class StripService(
         .orElseThrow { EntityNotFoundException() }
         .let { stripTransformer.transform(it) }
 
-    // Initially, the method did not return anything. After writing the mock data and at the end of writing the test,
+    // Initially, this method did not return anything. After writing the mock data and at the end of writing the test,
     // I set the return type, the one for which the test was written.
     // In order not to rewrite the test, I decided to return an entity, not a DTO.
     @Transactional
@@ -56,13 +56,13 @@ internal class StripService(
 
     private fun fillFirstRow(firstRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {
         val fullColumnList = columns.filter { column -> column.values.size == NUMBERS_IN_COLUMN }.toMutableList()
-        firstRow.fillRowWithColumnValues(fullColumnList)
+        fullColumnList.takeIf{ it.isNotEmpty() }?.let{ firstRow.fillRowWithColumnValues(it) }
         fillRemainingEmptyCells(firstRow, columns)
     }
 
     private fun fillSecondRow(secondRow: MutableList<Cell>, columns: MutableList<ColumnBuilderDto>) {
-        val columnList = columns.filter { column -> column.values.size == NUMBERS_IN_COLUMN.minus(1) }.toMutableList()
-        secondRow.fillRowWithColumnValues(columnList)
+        val columnsWithTwoValues = columns.filter { column -> column.values.size == NUMBERS_IN_COLUMN.minus(1) }.toMutableList()
+        columnsWithTwoValues.takeIf{ it.isNotEmpty() }?.let{ secondRow.fillRowWithColumnValues(it) }
         fillRemainingEmptyCells(secondRow, columns)
     }
 
@@ -102,6 +102,7 @@ internal class StripService(
         if (column.values.isNotEmpty()) {
             cell.value = column.values.removeFirst()
             cellRepository.save(cell)
+            emptyCells.remove(cell)
         } else {
             emptyCells.remove(cell)
             fillEmptyCell(emptyCells, columns)
